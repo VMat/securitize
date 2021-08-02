@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { ApolloProvider } from '@apollo/client';
+import { Row, Col } from 'antd';
 import './App.css';
+import "antd/dist/antd.css";
+import client from './apolloClient';
+import Wallets from './components/Wallets/Wallets';
+import Exchanges from './components/Exchanges/Exchanges';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+          <div style={{ display: 'inline-grid', width: '100%' }}>
+            <Row>
+              <Col lg={12} style={{ alignSelf: 'center' }}>
+                <h2 style={{ textAlign: 'start', color: '#1890ff', marginLeft: '5%' }}>{'Digital Wallet Dashboard'}</h2>
+              </Col>
+              <Col lg={12}>
+                <Exchanges />
+              </Col>
+            </Row>
+            <Wallets />
+          </div>
+      </div>
+    </ApolloProvider>
+    
   );
 }
 
