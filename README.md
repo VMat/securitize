@@ -2,10 +2,10 @@
 
 ## stack
 
-  NestJs  
-  React
-  Mongodb
-  GraphQL
+  - NestJs  
+  - React. 
+  - Mongodb. 
+  - GraphQL. 
 
 ## steps
 
