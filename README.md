@@ -1,13 +1,13 @@
 # Digital Wallet Dashboard
 
-## stack
+## Stack
 
   - NestJs  
   - React. 
   - Mongodb. 
   - GraphQL. 
 
-## steps
+## Steps
 
 ### API
 1) git clone https://github.com/VMat/securitize-api.git
@@ -21,3 +21,6 @@
 
 ## Live demo
 ### https://securitize.herokuapp.com/
+
+
+Author: Matías Villalva
