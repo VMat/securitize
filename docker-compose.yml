@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  dev:
+    image: villalvama/securitize-ui
+    ports:
+      - "8080:80"
+    environment:
+      - "API_HOST=http://localhost:3000/graphql"
+  prod:
+    image: villalvama/securitize-ui
+    ports:
+      - "5000:80"
+    environment:
+      - "API_HOST=https://securitize-api.herokuapp.com/graphql"

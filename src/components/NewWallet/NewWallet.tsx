@@ -17,7 +17,6 @@ const NewWalletForm: React.FC<(any)> =
                 setAddressInput('');
                 toggleShowModal();
                 message.success('New wallet successfully added.');
-                console.table('createWalletResponse', createWalletResponse);
                 dispatch(PROPERTIES.NEW_WALLET, {...createWalletResponse.createWallet, loadingBalance: true });
             }
         }, [createWalletResponse]);

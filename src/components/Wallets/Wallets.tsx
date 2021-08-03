@@ -3,7 +3,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { orderBy, first } from 'lodash';
 import { Alert, Badge, Statistic, Card, Row, Col, Skeleton, message, Empty, Spin } from 'antd';
 import { StarFilled, StarOutlined, EllipsisOutlined } from '@ant-design/icons';
-import { GET_WALLETS, UPDATE_WALLET } from './Wallets.queries';
+import { GET_WALLETS } from './Wallets.queries';
+import { UPDATE_WALLET } from './Wallets.mutations';
 import NewWalletForm from '../NewWallet/NewWallet';
 import { store, dispatch, PROPERTIES } from '../../store';
 import { useEffectAfterMount } from '../../customHooks';
@@ -50,10 +51,10 @@ const Wallets: React.FC<(any)> =
                                             <Card style={{ height: 150 }}>
                                                 <Statistic
                                                     title={<span style={{ wordWrap: 'break-word' }}>{`address: ${e.address}`}</span>}
-                                                    value={e.loadingBalance ? 'Getting' : e.balance * activeExchange.rate}
+                                                    value={e.loadingBalance || !activeExchange ? 'Getting' : e.balance * activeExchange.rate}
                                                     precision={2}
                                                     valueStyle={{ color: e.loadingBalance ? '#1890ff' : '#3f8600' }}
-                                                    suffix={e.loadingBalance ? <Spin indicator={<EllipsisOutlined style={{ fontSize: 48 }} />} /> : <span>{activeExchange.name}</span>}
+                                                    suffix={e.loadingBalance || !activeExchange ? <Spin indicator={<EllipsisOutlined style={{ fontSize: 48 }} />} /> : <span>{activeExchange.name}</span>}
                                                 />
                                                 {
                                                     e.isOld && <Alert message="This wallet is old" type="warning" showIcon />

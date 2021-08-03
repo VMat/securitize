@@ -41,22 +41,28 @@ const Exchange: React.FC<(any)> = () => {
                 loading ? <div style={{ textAlign: 'center' }}><Spin /></div> : (
                     <Affix offsetTop={0}>
                         <Card style={{ width: 300, float: 'right' }}>
-                            <Group value={activeExchange.name} onChange={(e) => changeActiveExchange(e.target.value)}>
                             {
-                                data.exchanges.map((e: any) => <RadioButton key={e._id} value={e.name}>{e.name}</RadioButton>)
-                            }
-                            </Group>
-                            {
-                                activeExchange.name !== EXCHANGE_TYPES.ETHEREUM && (
-                                    <Input type='number' value={rateInput} readOnly={!editMode} prefix={'Exchange rate: '} suffix={
-                                        <Button type="text" icon={editMode ? (
-                                            <>
-                                                <CloseOutlined style={{ color: 'red' }} onClick={() => setEditMode(false)} />
-                                                <CheckOutlined style={{ color: 'green' }} onClick={updateExchangeRate} />
-                                            </>
-                                        ) : <EditOutlined style={{ color: '#1890ff' }} onClick={() => setEditMode(true)} />} />}
-                                        onChange={(e) => setRateInput(e.target.value as any)} 
-                                    />
+                                activeExchange && (
+                                    <>
+                                        <Group value={activeExchange.name} onChange={(e) => changeActiveExchange(e.target.value)}>
+                                            {
+                                                data.exchanges.map((e: any) => <RadioButton key={e._id} value={e.name}>{e.name}</RadioButton>)
+                                            }
+                                        </Group>
+                                        {
+                                            activeExchange.name !== EXCHANGE_TYPES.ETHEREUM && (
+                                                <Input type='number' value={rateInput} readOnly={!editMode} prefix={'Exchange rate: '} suffix={
+                                                    <Button type="text" icon={editMode ? (
+                                                        <>
+                                                            <CloseOutlined style={{ color: 'red' }} onClick={() => setEditMode(false)} />
+                                                            <CheckOutlined style={{ color: 'green' }} onClick={updateExchangeRate} />
+                                                        </>
+                                                    ) : <EditOutlined style={{ color: '#1890ff' }} onClick={() => setEditMode(true)} />} />}
+                                                    onChange={(e) => setRateInput(e.target.value as any)} 
+                                                />
+                                            )
+                                        }
+                                    </>
                                 )
                             }
                         </Card>
